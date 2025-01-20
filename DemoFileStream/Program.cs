@@ -28,5 +28,26 @@ class Program
         {
             if (sr != null) sr.Close();
         }
+
+        Console.WriteLine("-------------------------------------");
+
+        try
+        {
+            using (StreamReader sr1 = File.OpenText(path))
+            {
+                while (!sr1.EndOfStream)
+                {
+                    string line = sr1.ReadLine();
+                    Console.WriteLine(line);
+                }
+            }
+
+        }
+        catch (IOException e)
+        {
+            Console.WriteLine("An error occurred!");
+            Console.WriteLine(e.Message);
+        }
+
     }
 }
