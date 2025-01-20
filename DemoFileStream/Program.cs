@@ -7,13 +7,11 @@ class Program
     static void Main(string[] args)
     {
         string path = @"C:\temp\file.txt";
-        FileStream fs = null;
         StreamReader sr = null;
 
         try
         {
-            fs = new FileStream(path, FileMode.Open);
-            sr = new StreamReader(fs);
+            sr = File.OpenText(path);
 
             string line = sr.ReadLine();
 
@@ -27,7 +25,6 @@ class Program
         finally
         {
             if (sr != null) sr.Close();
-            if (fs != null) fs.Close();
         }
     }
 }
